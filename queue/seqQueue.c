@@ -55,7 +55,7 @@ void* back_seqQueue(seqQueue queue)
     return NULL;
     struct dynamicArray* array=queue;
 
-    return array->pAddr[array->m_Size];
+    return array->pAddr[array->m_Size-1];
 }
 
 //返回队列大小
