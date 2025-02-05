@@ -35,6 +35,7 @@ void test01()
         struct person*personBack=back_seqQueue(myQueue);
         printf("队尾name:%s age:%d\n",personBack->name,personBack->age);
 
+
         //出队
         pop_seqQueue(myQueue);
     }
