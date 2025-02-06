@@ -1,4 +1,19 @@
 #include"linkQueue.h"
+//初始化队列
+LinkQueue init_LinkQueue()
+{
+    struct LQueue*myQueue=malloc(sizeof(struct LQueue));
+    if(myQueue==NULL)
+    return NULL;
+
+    myQueue->pHeader.next=NULL;
+    myQueue->m_size=0;
+    myQueue->pTail=&myQueue->pHeader;
+
+    return myQueue;
+}
+
+
 //入队
 void push_LinkQueue(LinkQueue queue,void*data)
 {
