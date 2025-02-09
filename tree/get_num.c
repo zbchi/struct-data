@@ -19,6 +19,17 @@ void caculateLeafNum(struct BinaryNode*root,int * num)
     caculateLeafNum(root->rChild,num);
 }
 
+int getTreeHeight(struct BinaryNode *root)
+{
+    if(root==NULL)
+    return 0;
+
+    int lHeight=getTreeHeight(root->lChild);
+    int rHeight=getTreeHeight(root->rChild);
+    //取大值+1
+    return (lHeight>rHeight?lHeight:rHeight)+1;
+}
+
 void test01()
 {
     struct BinaryNode nodeA={'A',NULL,NULL};
@@ -36,7 +47,7 @@ void test01()
     nodeB.rChild=&nodeC;
 
     nodeC.lChild=&nodeD;
-    nodeC.lChild=&nodeE;
+    nodeC.rChild=&nodeE;
 
     nodeF.rChild=&nodeG;
     nodeG.lChild=&nodeH;
@@ -44,7 +55,11 @@ void test01()
     //统计叶子数量
     int num=0;
     caculateLeafNum(&nodeA,&num);
-    printf("%d",num);
+    printf("LeavesNum:%d\n",num);
+
+    //统计树高度
+    int height=getTreeHeight(&nodeA);
+    printf("TreeHeight:%d\n",height);
 }
 
 int main()
